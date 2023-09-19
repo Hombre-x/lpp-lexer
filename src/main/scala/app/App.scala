@@ -1,22 +1,13 @@
 package com.graphene
 package app
 
-import core.cats.Lexer
-import cats.effect.{IO, IOApp}
+import cats.syntax.show.*
 
-import domain.token.Token
-import instances.token.given
-import syntax.parser.parse
-import parser.words.CharParsers.{word, sat}
+import core.Lexer
+import instances.token.TokenShow
 
+import scala.jdk.CollectionConverters.*
 
-object App extends IOApp.Simple:
-  
-  def run: IO[Unit] =
-    
-    for
-      _   <- IO.println("Starting parsing")
-      res <- IO.unit
-      _   <- IO.println(res)
-      
-    yield ()
+object App:
+  def lexifyToJava(program: String): java.util.List[String] = 
+     Lexer.lexify(program).map(_.show).asJava
