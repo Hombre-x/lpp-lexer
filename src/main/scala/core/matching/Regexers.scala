@@ -91,7 +91,7 @@ object Regexers:
     val words = reservedWords.mkString("|")
     s"""^(?!\\b(?i)($words)\\b)[a-zA-Z_][\\w_]*""".r               -> IdentifierToken
   
-  private val comment: RegexPair = """^((/\*[\s\S]*\*/)|//.*)""".r -> CommentToken
+  private val comment: RegexPair = """^((/\*[\s\S]*?\*/)|//.*)""".r -> CommentToken
   
   private val integer: RegexPair = """^-?\d+""".r                  -> NameToken("tkn_integer")
   
@@ -101,7 +101,7 @@ object Regexers:
   
   private val char: RegexPair    = """^('.')""".r                  -> CharToken
   
-  private val string: RegexPair  = """^(".*?")""".r                 -> StringToken
+  private val string: RegexPair  = """^(".*?")""".r                -> StringToken
   
   private val nonReservedWords: RegexList =
     // Longest to smallest
