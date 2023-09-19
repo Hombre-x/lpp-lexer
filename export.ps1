@@ -14,6 +14,9 @@ mkdir $SourcePath, $LibPath -ErrorAction SilentlyContinue
 # Invokes SBT to create the .jar file
 Invoke-Expression $CommandSBT
 
+# Copie the Scala code to the src directory
+Copy-Item -Path "./src/main/scala" -Destination $SourcePath -Recurse -ErrorAction SilentlyContinue
+
 # Copies the .jar file to the lib directory
 Copy-Item -Path "./target/scala-3.3.1/Lexer-assembly-0.0.1.jar" -Destination $LibPath
 
