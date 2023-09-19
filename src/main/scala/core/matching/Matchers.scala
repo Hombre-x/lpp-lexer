@@ -18,10 +18,5 @@ object Matchers:
     val matched = matchFirstIn(program).getOrElse(Token(ErrorToken, "Token not found"))
     (program.drop(matched.lexeme.length), matched)
     
-
-//    val matched = matchFirstIn(program) 
-
-    
-    
  
 end Matchers
